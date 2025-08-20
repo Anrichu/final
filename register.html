@@ -83,7 +83,7 @@
 
   <div class="form-container">
     <h2>Student Registration</h2>
-    <form id="registrationForm" action="success.html" method="post" novalidate>
+    <form id="registrationForm" novalidate>
       
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -110,6 +110,7 @@
 
   <script>
     document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent default submit
       let valid = true;
       document.querySelectorAll(".error").forEach(el => el.textContent = "");
 
@@ -142,8 +143,10 @@
         valid = false;
       }
 
-      if (!valid) e.preventDefault();
-      else alert("Form submitted successfully!");
+      if (valid) {
+        alert("Registration successful! Redirecting to Home Page...");
+        window.location.href = "index.html"; // redirect to home page
+      }
     });
   </script>
 
