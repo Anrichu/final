@@ -7,7 +7,6 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background-image: url('library_bg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -66,23 +65,44 @@
             background-color: #003366;
         }
 
-        /* Link styles */
         a:link, a:visited, a:active {
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
             color: red;
         }
     </style>
+
+    <script>
+        function validateForm() {
+            const form = document.forms["regForm"];
+            const name = form["name"].value;
+            const password = form["password"].value;
+            const email = form["email"].value;
+            const phone = form["phone"].value;
+            const gender = form["gender"].value;
+            const dob = form["dob"].value;
+            const address = form["address"].value;
+
+            // Basic validation
+            if (name === "" || password === "" || email === "" || phone === "" || gender === "" || dob === "" || address === "") {
+                alert("Please fill out all required fields.");
+                return false;
+            }
+
+            // Redirect to index.html after successful validation
+            window.location.href = "index.html";
+            return false; // Prevent form submission
+        }
+    </script>
 </head>
 <body>
 
-   
-
     <div class="container">
         <h2>Registration Form</h2>
-        <form name="regForm" method="post" onsubmit="return validateForm()">
+        <form name="regForm" method="post" onsubmit="return validateForm();">
             <table>
                 <tr>
                     <td>Name:</td>
@@ -134,4 +154,6 @@
 
 </body>
 </html>
+
+
 
